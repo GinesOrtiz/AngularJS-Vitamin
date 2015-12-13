@@ -1,0 +1,25 @@
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" ng-click="collapseHeader = !collapseHeader">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" ui-sref="dashboard">
+                AngularJS Vitamin - @GinesOrtiz
+            </a>
+        </div>
+        <div class="navbar-collapse" uib-collapse="!collapseHeader">
+            <ul class="nav navbar-nav navbar-left">
+                <li><a ui-sref="p1" ui-sref-active="active" role-auth="{'only' : ['user']}">only users</a></li>
+                <li><a ui-sref="p2" ui-sref-active="active" role-auth="{'only' : ['moderator']}">only moderator</a></li>
+                <li><a ui-sref="p3" ui-sref-active="active" role-auth="{'only' : ['administrator']}">only admin</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a ui-sref="logout">{{'auth.login.logout' | i18next}}</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>

@@ -1,0 +1,29 @@
+{
+  "name": "AngularJS-Vitamin",
+  "description": "Full angularJS base including Auth with different roles and dynamic locale and layouts",
+  "main": "app/index.html",
+  "moduleType": [
+    "globals"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/GinesOrtiz/AngularJS-Vitamin",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.7",
+    "angular-permission": "~1.1.1",
+    "i18next": "1.11.1",
+    "ng-i18next": "0.5.2",
+    "angular-loading-bar": "~0.8.0",
+    "bootstrap": "~3.3.5",
+    "ngstorage": "~0.3.10",
+    "angular-animate": "~1.4.8",
+    "angular-dynamic-locale": "~0.1.29"
+  }
+}

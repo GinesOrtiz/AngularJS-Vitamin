@@ -1,0 +1,20 @@
+{
+  "auth": {
+    "login": {
+      "title": "Iniciar de sesión",
+      "logout": "Cerrar sesión",
+      "email": "Correo electrónico",
+      "password": "Contraseña",
+      "errorAtLogin": "Ha ocurrido un error al iniciar sesión",
+      "passwordRecovery": "Recuperar contraseña de usuario"
+    },
+    "signup": {
+      "title": "Registrarse",
+      "password2": "Repite la contraseña",
+      "errorAtSignup": "Ha ocurrido un error al registrarte",
+      "passwordMatch": "Las contraseñas no coinciden",
+      "emailInUse": "El correo ya está registrado",
+      "createAccount": "Crear cuenta"
+    }
+  }
+}

@@ -1,0 +1,28 @@
+<div class="col-md-6 col-md-offset-3">
+    <h2>{{'auth.signup.title' | i18next}}</h2>
+
+    <div class="alert alert-danger" ng-show="signupForm.error">{{'auth.login.errorAtLogin' | i18next}}</div>
+    <div class="alert alert-danger" ng-show="signupForm.emailError">{{'auth.login.errorAtLogin' | i18next}}</div>
+
+    <form name="form" role="form" ng-submit="signup()">
+        <div class="form-group">
+            <label for="username">{{'auth.login.email' | i18next}}</label>
+            <input type="email" ng-model="signupForm.username" name="username" id="username" class="form-control"
+                   required/>
+        </div>
+        <div class="form-group">
+            <label for="password">{{'auth.login.password' | i18next}}</label>
+            <input type="password" ng-model="signupForm.password" name="password" id="password" class="form-control"
+                   required/>
+        </div>
+        <div class="form-group">
+            <label for="password2">{{'auth.signup.password2' | i18next}}</label>
+            <input type="password" ng-model="signupForm.password" name="password" id="password2" class="form-control"
+                   required/>
+        </div>
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">{{'auth.signup.createAccount' | i18next}}</button>
+            <a ui-sref="login">{{'auth.login.title' | i18next}}</a>
+        </div>
+    </form>
+</div>
