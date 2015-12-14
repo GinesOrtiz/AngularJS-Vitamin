@@ -1,8 +1,9 @@
-# AngularJS-Vitamin
-Full angularJS base including Auth with different roles and dynamic locale and layouts
+* /temp
 
 # TODOS
-- [ ] Add a readme with the basic actual functions
-- [ ] Make more features to show functionality
+- [ ] Add different layouts for each user role
+- [ ] Make an online demo to test
+- [ ] Use Jasmine to test the services
+- [ ] Improve UIX?
+- [x] Add a readme with the basic actual functions
 - [x] Comment Gulp functions
-- [x] Make the first commit and decide to make open source my angular base!
