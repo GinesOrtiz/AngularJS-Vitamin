@@ -130,10 +130,10 @@ function tmpData($rootScope) {
          Declaration of basic functionality for i18n module
          */
         $i18nextProvider.options = {
-            lng: 'es',                              // Default locale
+            lng: 'en',                              // Default locale
             useCookie: false,
             useLocalStorage: false,
-            resGetPath: '/assets/locale/es.json',   // Locale file with lng from above
+            resGetPath: '/assets/locale/en.json',   // Locale file with lng from above
             defaultLoadingValue: ''
         };
 
@@ -148,8 +148,8 @@ function tmpData($rootScope) {
         tmhDynamicLocaleProvider.localeLocationPattern('/angular/i18n/angular-locale_{{locale}}.js');
     }
 
-    appRun.$invoke = ['permission', 'UserFactory', '$rootScope', '$http', 'tmhDynamicLocale'];
-    function appRun(Permission, UserFactory, $rootScope, $http, tmhDynamicLocale) {
+    appRun.$invoke = ['permission', 'UserFactory', '$rootScope', '$http', 'tmhDynamicLocale', '$i18next'];
+    function appRun(Permission, UserFactory, $rootScope, $http, tmhDynamicLocale, $i18next) {
         $rootScope.$on('$stateChangePermissionStart', function (event, args) {
             /*
             In every state configuration from module.*.js we define inside data object a template key. This will tell
@@ -172,6 +172,7 @@ function tmpData($rootScope) {
 
             var locale = (navigator.language || navigator.userLanguage).split('-')[0];
             tmhDynamicLocale.set(locale);
+            $i18next.options.lng = locale;
         });
 
         /*

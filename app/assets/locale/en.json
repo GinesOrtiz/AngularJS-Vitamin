@@ -1,0 +1,24 @@
+{
+  "auth": {
+    "login": {
+      "title": "Logging",
+      "logout": "Logout",
+      "email": "Email address",
+      "password": "Password",
+      "errorAtLogin": "There was an error while login."
+    },
+    "signup": {
+      "title": "Sign Up",
+      "password2": "Confirm password",
+      "errorAtSignup": "There was an error while signing up",
+      "passwordMatch": "The password doesn't match",
+      "emailInUse": "This mail is already in our db",
+      "createAccount": "Create account"
+    }
+  },
+  "async" : {
+    "loremIpsum" : {
+      "title" : "This text is loaded by a promise inside a resolve!"
+    }
+  }
+}
