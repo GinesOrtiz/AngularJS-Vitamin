@@ -2,7 +2,8 @@
 Full angularJS base including Auth with different roles and dynamic locale and layouts
 
 # For which kind of project should I use this seed?
-This seed is made for projects where you will have multiple users with different roles and secctions depending of the user role, different layouts as you need and i18n across all the project.
+This seed is made for projects where you will have multiple users with different roles and secctions depending of the 
+user role, different layouts as you need and i18n across all the project.
 
 # Content of the seed
 * Auth module with different roles (angular-permission)
@@ -12,6 +13,10 @@ This seed is made for projects where you will have multiple users with different
 * Http interceptor to inject Header authentication
 * Bootstrap + UI Bootstrap
 * SASS styles for each module and view
+
+# Comments on code
+Almost every file from features folder has comments to explain how it works and the practices that I recommend to use
+based on multiple guidelines I read. It's highly recommended to read all file's comments.
 
 # Pre-requisites
 * nodeJS

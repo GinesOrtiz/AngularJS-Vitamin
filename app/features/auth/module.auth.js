@@ -2,10 +2,10 @@
 (function () {
     angular
         .module('angularJS-Vitamin.auth', [])
-        .config(authConfig);
+        .config(AuthConfig);
 
-    authConfig.$invoke = ['$urlRouterProvider', '$stateProvider'];
-    function authConfig($urlRouterProvider, $stateProvider) {
+    AuthConfig.$invoke = ['$stateProvider'];
+    function AuthConfig($stateProvider) {
         $stateProvider
             .state('login', {
                 url: '/login',

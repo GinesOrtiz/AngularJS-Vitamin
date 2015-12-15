@@ -5,8 +5,7 @@
       "logout": "Cerrar sesión",
       "email": "Correo electrónico",
       "password": "Contraseña",
-      "errorAtLogin": "Ha ocurrido un error al iniciar sesión",
-      "passwordRecovery": "Recuperar contraseña de usuario"
+      "errorAtLogin": "Ha ocurrido un error al iniciar sesión"
     },
     "signup": {
       "title": "Registrarse",
@@ -15,6 +14,11 @@
       "passwordMatch": "Las contraseñas no coinciden",
       "emailInUse": "El correo ya está registrado",
       "createAccount": "Crear cuenta"
+    }
+  },
+  "async" : {
+    "loremIpsum" : {
+      "title" : "Este texto se carga con promises en el resolve!"
     }
   }
 }
