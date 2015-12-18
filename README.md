@@ -49,7 +49,7 @@ gulp compile
 * App .js files concat AND compressed
 
 #### NOTES
-I managed to create a simple chrome application to make easier the locale file edit: [Google chrome extension!](https://chrome.google.com/webstore/detail/angularjs-vitamin-locale/dhkfjnkckpdjggacleonmnhnjnbebkmh]
+I managed to create a simple chrome application to make easier the locale file edit: [Google chrome extension!](https://chrome.google.com/webstore/detail/angularjs-vitamin-locale/dhkfjnkckpdjggacleonmnhnjnbebkmh)
 
 File's names are very important in order to concat in the correct way automaticly.
 * Modules: module.name.js
