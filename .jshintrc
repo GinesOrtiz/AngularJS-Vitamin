@@ -1,0 +1,19 @@
+{
+  "bitwise": true,
+  "camelcase": true,
+  "curly": true,
+  "eqeqeq": true,
+  "eqnull": true,
+  "esnext": true,
+  "globalstrict": true,
+  "mocha": true,
+  "noarg": true,
+  "node": true,
+  "strict": true,
+  "quotmark" : "single",
+  "undef": true,
+  "globals": {
+    "angular": true,
+    "navigator" : true
+  }
+}

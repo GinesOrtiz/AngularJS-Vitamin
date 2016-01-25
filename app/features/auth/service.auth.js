@@ -1,5 +1,5 @@
-"use strict";
 (function () {
+    'use strict';
     angular
         .module('angularJS-Vitamin.auth')
         .factory('UserFactory', UserFactory);
@@ -88,6 +88,6 @@
 
                 return dfd.promise;
             }
-        }
+        };
     }
 }());

@@ -1,5 +1,5 @@
-"use strict";
 (function () {
+    'use strict';
     angular
         .module('angularJS-Vitamin.components', [])
         .directive('vitHeader', vitHeader)
@@ -20,7 +20,7 @@
             restrict: 'E',
             templateUrl: '/features/components/header/header.tpl.html',
             controller: 'HeaderComponentController'
-        }
+        };
     }
 
     /*
@@ -48,6 +48,6 @@
                     element.remove();
                 }
             }
-        }
+        };
     }
 }());

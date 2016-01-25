@@ -1,5 +1,6 @@
-var API_base = 'http://localhost:3000/';
-var API_paths = {
+'use strict';
+var apiBase = 'http://localhost:3000/';
+var apiPath = {
     login: 'user/login',
     passwordRecovery: 'user/recovery'
 };
@@ -10,8 +11,9 @@ var API_paths = {
 
  Ex: $http(build('login'))
  */
+
 function buildURL(path) {
-    return API_base + API_paths[path];
+    return apiBase + apiPath[path];
 }
 
 /*
@@ -24,6 +26,7 @@ function buildURL(path) {
  return A_CONDITION_THAT_RETURNS_TRUE_IF_USER_BELONGS_TO_THIS_ROLE;
  }
  */
+
 function loadPermissions(Permission, UserFactory) {
     Permission.defineRole('anonymous', function () {
         return !UserFactory.getUser();
@@ -61,6 +64,7 @@ function loadPermissions(Permission, UserFactory) {
 
  We can storage an object, array or simply a string.
  */
+
 function tmpData($rootScope) {
     var tmpDataObject = {};
     $rootScope.tmpData = function (method, key, value) {
@@ -73,7 +77,6 @@ function tmpData($rootScope) {
                 break;
             case 'get' :
                 return tmpDataObject[key];
-                break;
         }
     };
 }

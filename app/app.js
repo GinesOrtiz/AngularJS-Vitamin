@@ -1,6 +1,5 @@
-"use strict";
-
 (function () {
+    'use strict';
     angular
         .module('angularJS-Vitamin', [
             /*
@@ -34,7 +33,7 @@
          For example /login. By it's own nature, login will redirect to /dashboard if the user is already logged.
          */
         $urlRouterProvider.otherwise(function ($injector) {
-            var $state = $injector.get("$state");
+            var $state = $injector.get('$state');
             $state.transitionTo('login');
         });
 
@@ -73,15 +72,15 @@
     function appRun(Permission, UserFactory, $rootScope, $http, tmhDynamicLocale, $i18next) {
         $rootScope.$on('$stateChangePermissionStart', function (event, args) {
             /*
-            In every state configuration from module.*.js we define inside data object a template key. This will tell
-            angular which template it should render for the view. Here we make the url to use in index.html with an
-            ng-include.
+             In every state configuration from module.*.js we define inside data object a template key. This will tell
+             angular which template it should render for the view. Here we make the url to use in index.html with an
+             ng-include.
              */
             $rootScope.layoutTemplate = '/layouts/' + args.data.template + '.html';
 
             /*
-            With this code we can detect if user is not anonymous and inject some Auth in every external call to a
-            resource. This is useful when our backend needs a token validation for calls.
+             With this code we can detect if user is not anonymous and inject some Auth in every external call to a
+             resource. This is useful when our backend needs a token validation for calls.
              */
 
             //var reqPerms = args.data.permissions;
@@ -97,9 +96,12 @@
         });
 
         /*
-        Normally we can externalize some functions to have a more friendly and readable app config file.
-        In this case those two functions are created in utils.js.
+         Normally we can externalize some functions to have a more friendly and readable app config file.
+         In this case those two functions are created in utils.js.
          */
+
+        /* global loadPermissions */
+        /* global tmpData */
         loadPermissions(Permission, UserFactory);
         tmpData($rootScope);
     }

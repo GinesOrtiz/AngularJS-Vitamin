@@ -1,5 +1,5 @@
-"use strict";
 (function () {
+    'use strict';
     angular
         .module('angularJS-Vitamin.auth', [])
         .config(AuthConfig);
@@ -44,6 +44,6 @@
                         redirectTo: 'dashboard'
                     }
                 }
-            })
+            });
     }
 }());

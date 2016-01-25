@@ -1,13 +1,12 @@
-'use strict';
-
-(function(){
+(function () {
+    'use strict';
 
     angular
         .module('angularJS-Vitamin.async', [])
         .config(AsyncConfig);
 
     AsyncConfig.$invoke = ['$stateProvider'];
-    function AsyncConfig($stateProvider){
+    function AsyncConfig($stateProvider) {
         $stateProvider
             .state('loremIpsum', {
                 url: '/lorem',
@@ -20,7 +19,7 @@
                         redirectTo: 'login'
                     }
                 },
-                resolve : {
+                resolve: {
                     /*
                      More information: https://github.com/angular-ui/ui-router/wiki#resolve
 
@@ -33,7 +32,7 @@
 
                      The name we define will be the same to inject in our controller.
                      */
-                    loremIpsum : function(AsyncFactory){
+                    loremIpsum: function (AsyncFactory) {
                         return AsyncFactory.getLoremIpsum();
                     }
                 }

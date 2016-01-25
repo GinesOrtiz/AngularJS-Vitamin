@@ -1,5 +1,5 @@
-"use strict";
 (function () {
+    'use strict';
     angular
         .module('angularJS-Vitamin.auth')
         .controller('SignupController', SignupController);
@@ -19,11 +19,11 @@
                     if (response.success) {
                         $state.go('dashboard');
                     } else {
-                        $scope.loginForm.errorEmail = err;
+                        $scope.loginForm.errorEmail = response;
                     }
                 }, function (err) {
                     $scope.loginForm.error = err;
-                })
-        }
+                });
+        };
     }
 }());
