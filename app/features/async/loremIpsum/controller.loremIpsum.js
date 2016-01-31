@@ -4,7 +4,7 @@
         .module('angularJS-Vitamin.async')
         .controller('LoremIpsumController', LoremIpsumController);
 
-    LoremIpsumController.$invoke = ['$scope', 'loremIpsum'];
+    LoremIpsumController.$inject = ['$scope', 'loremIpsum'];
     function LoremIpsumController($scope, loremIpsum) {
         /*
          Because we defined in the resolve loremImpsum as key for the promise result, we can just inject it on our

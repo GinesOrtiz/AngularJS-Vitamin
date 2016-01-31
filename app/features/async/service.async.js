@@ -5,7 +5,7 @@
         .factory('AsyncFactory', AsyncFactory);
 
 
-    AsyncFactory.$invoke = ['$http', '$q'];
+    AsyncFactory.$inject = ['$http', '$q'];
     function AsyncFactory($http, $q) {
         return {
             getLoremIpsum: function () {

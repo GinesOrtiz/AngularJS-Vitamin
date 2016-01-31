@@ -20,5 +20,10 @@
     "loremIpsum" : {
       "title" : "This text is loaded by a promise inside a resolve!"
     }
+  },
+  "dashboard" : {
+    "home" : {
+      "title" : "Home"
+    }
   }
 }

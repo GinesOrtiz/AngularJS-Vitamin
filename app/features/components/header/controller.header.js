@@ -4,7 +4,7 @@
         .module('angularJS-Vitamin.components')
         .controller('HeaderComponentController', HeaderComponentController);
 
-    HeaderComponentController.$invoke = ['$scope'];
+    HeaderComponentController.$inject = ['$scope'];
     function HeaderComponentController($scope) {
 
     }

@@ -26,14 +26,14 @@
         .run(appRun);
 
 
-    appConfig.$invoke = ['$locationProvider', '$i18nextProvider', 'cfpLoadingBarProvider', '$urlRouterProvider', 'tmhDynamicLocaleProvider'];
+    appConfig.$inject = ['$locationProvider', '$i18nextProvider', 'cfpLoadingBarProvider', '$urlRouterProvider', 'tmhDynamicLocaleProvider'];
     function appConfig($locationProvider, $i18nextProvider, cfpLoadingBarProvider, $urlRouterProvider, tmhDynamicLocaleProvider) {
         /*
          In case non of all the $stateProvider states gets resolved, we want to redirect the user to specific path.
          For example /login. By it's own nature, login will redirect to /dashboard if the user is already logged.
          */
-        $urlRouterProvider.otherwise(function ($injector) {
-            var $state = $injector.get('$state');
+        $urlRouterProvider.otherwise(function ($invokeor) {
+            var $state = $invokeor.get('$state');
             $state.transitionTo('login');
         });
 
@@ -53,7 +53,7 @@
             lng: 'en',                              // Default locale
             useCookie: false,
             useLocalStorage: false,
-            resGetPath: '/assets/locale/en.json',   // Locale file with lng from above
+            resGetPath: '/assets/locale/__lng__.json',   // Locale file with lng from above
             defaultLoadingValue: ''
         };
 
@@ -68,7 +68,7 @@
         tmhDynamicLocaleProvider.localeLocationPattern('/angular/i18n/angular-locale_{{locale}}.js');
     }
 
-    appRun.$invoke = ['permission', 'UserFactory', '$rootScope', '$http', 'tmhDynamicLocale', '$i18next'];
+    appRun.$inject = ['Permission', 'UserFactory', '$rootScope', '$http', 'tmhDynamicLocale', '$i18next'];
     function appRun(Permission, UserFactory, $rootScope, $http, tmhDynamicLocale, $i18next) {
         $rootScope.$on('$stateChangePermissionStart', function (event, args) {
             /*
@@ -82,7 +82,7 @@
              With this code we can detect if user is not anonymous and inject some Auth in every external call to a
              resource. This is useful when our backend needs a token validation for calls.
              */
-
+            //
             //var reqPerms = args.data.permissions;
             //var anonymousUser = angular.isDefined(reqPerms.only) && reqPerms.only[0] === 'anonymous';
             //if (!anonymousUser) {

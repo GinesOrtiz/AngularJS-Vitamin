@@ -4,7 +4,7 @@
         .module('angularJS-Vitamin.auth')
         .controller('SignupController', SignupController);
 
-    SignupController.$invoke = ['$scope', 'UserFactory', '$state'];
+    SignupController.$inject = ['$scope', 'UserFactory', '$state'];
     function SignupController($scope, UserFactory, $state) {
         $scope.signupForm = {
             email: null,

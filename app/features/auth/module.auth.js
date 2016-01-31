@@ -4,7 +4,7 @@
         .module('angularJS-Vitamin.auth', [])
         .config(AuthConfig);
 
-    AuthConfig.$invoke = ['$stateProvider'];
+    AuthConfig.$inject = ['$stateProvider'];
     function AuthConfig($stateProvider) {
         $stateProvider
             .state('login', {

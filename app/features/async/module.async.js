@@ -5,7 +5,7 @@
         .module('angularJS-Vitamin.async', [])
         .config(AsyncConfig);
 
-    AsyncConfig.$invoke = ['$stateProvider'];
+    AsyncConfig.$inject = ['$stateProvider'];
     function AsyncConfig($stateProvider) {
         $stateProvider
             .state('loremIpsum', {

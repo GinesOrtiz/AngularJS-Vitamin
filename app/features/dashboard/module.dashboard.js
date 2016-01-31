@@ -18,10 +18,10 @@
      .config(PascalCaseToFunction)
      .run('PascalCaseRunFunction', PascalCaseRunFunction)
 
-     PascalCaseToFunction.$invoke = ['$SomeProvider'];
+     PascalCaseToFunction.$inject = ['$SomeProvider'];
      function PascalCaseToFunction($SomeProvider){ ... }
 
-     PascalCaseRunFunction.$invoke = ['$SomeModuleConfiguration'];
+     PascalCaseRunFunction.$inject = ['$SomeModuleConfiguration'];
      function PascalCaseRunFunction($SomeModuleConfiguration){ ... }
 
      IMPORTANT
@@ -32,7 +32,7 @@
 
      */
 
-    DashboardConfig.$invoke = ['$stateProvider'];
+    DashboardConfig.$inject = ['$stateProvider'];
     function DashboardConfig($stateProvider) {
         $stateProvider
         /*

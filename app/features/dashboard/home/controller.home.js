@@ -17,8 +17,10 @@
      module.dashboard.js
      */
 
-    HomeController.$invoke = ['$scope', 'userInfo'];
-    function HomeController($scope, userInfo) {
+    HomeController.$inject = ['$scope', 'userInfo', '$filter'];
+    function HomeController($scope, userInfo, $filter) {
         $scope.user = userInfo;
+        $scope.html = '<br>demo<br>';
+        var demo = $filter('i18next')('auth...');
     }
 }());
