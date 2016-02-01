@@ -4,8 +4,8 @@
         .module('angularJS-Vitamin.auth')
         .factory('UserFactory', UserFactory);
 
-    UserFactory.$inject = ['$http', '$q', '$localStorage'];
-    function UserFactory($http, $q, $localStorage) {
+    UserFactory.$inject = ['$q', '$localStorage'];
+    function UserFactory($q, $localStorage) {
         return {
             getUser: function () {
                 return $localStorage.User;

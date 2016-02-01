@@ -51,6 +51,7 @@
          */
         $i18nextProvider.options = {
             lng: 'en',                              // Default locale
+            fallbackLng: 'en',
             useCookie: false,
             useLocalStorage: false,
             resGetPath: '/assets/locale/__lng__.json',   // Locale file with lng from above
@@ -68,9 +69,9 @@
         tmhDynamicLocaleProvider.localeLocationPattern('/angular/i18n/angular-locale_{{locale}}.js');
     }
 
-    appRun.$inject = ['Permission', 'UserFactory', '$rootScope', '$http', 'tmhDynamicLocale', '$i18next'];
-    function appRun(Permission, UserFactory, $rootScope, $http, tmhDynamicLocale, $i18next) {
-        $rootScope.$on('$stateChangePermissionStart', function (event, args) {
+    appRun.$inject = ['$rootScope', 'tmhDynamicLocale', '$i18next'];
+    function appRun($rootScope, tmhDynamicLocale, $i18next) {
+        $rootScope.$on('$stateChangeSuccess', function (event, args) {
             /*
              In every state configuration from module.*.js we define inside data object a template key. This will tell
              angular which template it should render for the view. Here we make the url to use in index.html with an
@@ -82,6 +83,8 @@
              With this code we can detect if user is not anonymous and inject some Auth in every external call to a
              resource. This is useful when our backend needs a token validation for calls.
              */
+            var locale = (navigator.language || navigator.userLanguage).split('-')[0];
+
             //
             //var reqPerms = args.data.permissions;
             //var anonymousUser = angular.isDefined(reqPerms.only) && reqPerms.only[0] === 'anonymous';
@@ -90,7 +93,6 @@
             //    locale = UserFactory.getUser().locale;
             //}
 
-            var locale = (navigator.language || navigator.userLanguage).split('-')[0];
             tmhDynamicLocale.set(locale);
             $i18next.options.lng = locale;
         });
@@ -100,9 +102,7 @@
          In this case those two functions are created in utils.js.
          */
 
-        /* global loadPermissions */
         /* global tmpData */
-        loadPermissions(Permission, UserFactory);
         tmpData($rootScope);
     }
 }());

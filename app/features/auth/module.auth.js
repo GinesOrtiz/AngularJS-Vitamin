@@ -2,7 +2,8 @@
     'use strict';
     angular
         .module('angularJS-Vitamin.auth', [])
-        .config(AuthConfig);
+        .config(AuthConfig)
+        .run(AuthRun);
 
     AuthConfig.$inject = ['$stateProvider'];
     function AuthConfig($stateProvider) {
@@ -45,5 +46,11 @@
                     }
                 }
             });
+    }
+
+    AuthRun.$inject = ['Permission', 'UserFactory'];
+    function AuthRun(Permission, UserFactory){
+        /* global loadPermissions */
+        loadPermissions(Permission, UserFactory);
     }
 }());
