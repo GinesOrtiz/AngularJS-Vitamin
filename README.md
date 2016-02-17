@@ -20,14 +20,17 @@ based on multiple guidelines I read. It's highly recommended to read all file's 
 
 # Pre-requisites
 * nodeJS
-* Ruby
-* Compass & Sass
 * Gulp
 
 # Installation
 ```
 sudo npm install
 bower install
+```
+
+In some cases you will need to replace the git protocol to https
+```
+git config --global url."https://".insteadOf git://
 ```
 
 # Deploy the project in development mode
@@ -49,6 +52,9 @@ gulp compile
 * App .js files concat AND compressed
 
 #### NOTES
+SASS has an automatic injection. In order to use it just create a _file.scss for an specific feature and Gulp will
+inject it. The one that has preference is style.scss and the underscore "_" is required for the rest of .scss files
+
 I managed to create a simple chrome application to make easier the locale file edit: [Google chrome extension!](https://chrome.google.com/webstore/detail/angularjs-vitamin-locale/dhkfjnkckpdjggacleonmnhnjnbebkmh)
 
 File's names are very important in order to concat in the correct way automaticly.

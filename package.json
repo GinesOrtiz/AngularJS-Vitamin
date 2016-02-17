@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "description": "Full angularJS base including Auth with different roles and dynamic locale and layouts",
   "dependencies": {
+    "browser-sync": "^2.11.1",
+    "connect-modrewrite": "^0.8.5",
     "gulp": "^3.9.0",
     "gulp-compass": "^2.1.0",
     "gulp-concat": "~2.6.0",

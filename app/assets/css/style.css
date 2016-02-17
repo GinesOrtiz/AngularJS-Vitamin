@@ -1,1 +1,6 @@
-body{background:white}
+body {
+  background: white;
+  color: black; }
+
+#login h2 {
+  font-weight: normal; }

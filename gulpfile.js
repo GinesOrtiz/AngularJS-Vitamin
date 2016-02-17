@@ -1,7 +1,8 @@
 'use strict';
 
 var gulp = require('gulp');
-var connect = require('gulp-connect');
+var browserSync = require('browser-sync').create();
+var modRewrite = require('connect-modrewrite');
 var compass = require('gulp-compass');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
@@ -12,22 +13,35 @@ var sass = require('gulp-sass');
  Gulp will run a server in the port 8080 with ./app folder on it
  */
 gulp.task('connect', function () {
-    connect.server({
-        root: 'app',                    // Main app folder
-        port: 8080,                     // localhost:8080
-        livereload: true,               // Allow us to reload any time we want
-        fallback: 'app/index.html'      // if HTML5 enabled this is required
+    browserSync.init({
+        notify: false,
+        port: 8080,                         // localhost:8080
+        timestamps: true,                         // localhost:8080
+        server: {
+            baseDir: './app',               // Main app folder
+            middleware: [                   // if HTML5 enabled this is required
+                modRewrite([
+                    '/assets/(.*) /assets/$1 [L]',
+                    '!\\.\\w+$ /index.html [L]'
+                ])
+            ]
+        }
     });
 });
 
 /*
- Sass compiler (ruby and compass+sass are required)
+ NodeSASS compiler
  */
+
 gulp.task('sass', function () {
-    gulp.src('./app/assets/sass/style.scss')
-        .pipe(sass({outputStyle: 'compressed'}))
+    gulp.src([
+            './app/assets/sass/style.scss',
+            './app/features/**/*.scss'
+        ])
+        .pipe(concat('style.css'))
+        .pipe(sass())
         .pipe(gulp.dest('./app/assets/css'))
-        .pipe(connect.reload());
+        .pipe(browserSync.stream());
 });
 
 
@@ -36,12 +50,12 @@ gulp.task('sass', function () {
  */
 gulp.task('html', function () {
     gulp.src('./app/**/*.html')
-        .pipe(connect.reload());
+        .pipe(browserSync.stream());
 });
 
 gulp.task('json', function () {
     gulp.src('./app/**/*.json')
-        .pipe(connect.reload());
+        .pipe(browserSync.stream());
 });
 
 /*
@@ -78,7 +92,7 @@ gulp.task('js', function () {
         ])
         .pipe(concat('app.js'))                     // Name of concat file
         .pipe(gulp.dest('./app/assets/js/'))        // Folder to save the file
-        .pipe(connect.reload());                    // Force the reload to see the changes
+        .pipe(browserSync.stream());                  // Force the reload to see the changes
 });
 
 
