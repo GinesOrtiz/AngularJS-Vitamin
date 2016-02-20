@@ -1,8 +1,8 @@
 'use strict';
 
 var gulp = require('gulp');
-var connect = require('gulp-connect');
-var compass = require('gulp-compass');
+var browserSync = require('browser-sync').create();
+var modRewrite = require('connect-modrewrite');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 var minifyCss = require('gulp-minify-css');
@@ -12,22 +12,35 @@ var sass = require('gulp-sass');
  Gulp will run a server in the port 8080 with ./app folder on it
  */
 gulp.task('connect', function () {
-    connect.server({
-        root: 'app',                    // Main app folder
-        port: 8080,                     // localhost:8080
-        livereload: true,               // Allow us to reload any time we want
-        fallback: 'app/index.html'      // if HTML5 enabled this is required
+    browserSync.init({
+        notify: false,
+        port: 8080,                         // localhost:8080
+        timestamps: true,                         // localhost:8080
+        server: {
+            baseDir: './app',               // Main app folder
+            middleware: [                   // if HTML5 enabled this is required
+                modRewrite([
+                    '/assets/(.*) /assets/$1 [L]',
+                    '!\\.\\w+$ /index.html [L]'
+                ])
+            ]
+        }
     });
 });
 
 /*
- Sass compiler (ruby and compass+sass are required)
+ NodeSASS compiler
  */
+
 gulp.task('sass', function () {
-    gulp.src('./app/assets/sass/style.scss')
-        .pipe(sass({outputStyle: 'compressed'}))
+    gulp.src([
+            './app/assets/sass/style.scss',
+            './app/features/**/*.scss'
+        ])
+        .pipe(concat('style.css'))
+        .pipe(sass())
         .pipe(gulp.dest('./app/assets/css'))
-        .pipe(connect.reload());
+        .pipe(browserSync.stream());
 });
 
 
@@ -36,12 +49,12 @@ gulp.task('sass', function () {
  */
 gulp.task('html', function () {
     gulp.src('./app/**/*.html')
-        .pipe(connect.reload());
+        .pipe(browserSync.stream());
 });
 
 gulp.task('json', function () {
     gulp.src('./app/**/*.json')
-        .pipe(connect.reload());
+        .pipe(browserSync.stream());
 });
 
 /*
@@ -49,24 +62,19 @@ gulp.task('json', function () {
  -------------------------------
  In this task we are going to compress all the JS files within your angular application.
  We want to be a little dynamic and Gulp allows us to use some regular expressions to find our JS files.
-
  How to use it:
  *.js - This means that we want every file that ends in .js
  module.*.js - All files that starts with the word module and ends with .js
  ** - We are going to search as deep as we can in order to find the files we want
-
  Example:
  We want to include all the controllers in our project. To do that we need to use a specific name in those files.
  To make the login controller we need to create the file "controller.login.js"
-
  In order to find that controller we only need to specify that we are looking for controller.*.js because the name
  of the file meets the regular expression.
-
  In our folder structure we put the controller inside a folder of a specific feature and then in the main feature.
  For login we end up with the next structure: app/features/auth/login/controller.login.js
  So now if we want to search this controller we can say: ./app/features/ ** /controller.*.js  (without spaces)
  With this url gulp will search in every folder inside features as long as he finds the controller.
-
  */
 gulp.task('js', function () {
     return gulp.src([
@@ -78,7 +86,7 @@ gulp.task('js', function () {
         ])
         .pipe(concat('app.js'))                     // Name of concat file
         .pipe(gulp.dest('./app/assets/js/'))        // Folder to save the file
-        .pipe(connect.reload());                    // Force the reload to see the changes
+        .pipe(browserSync.stream());                  // Force the reload to see the changes
 });
 
 
