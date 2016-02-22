@@ -3,7 +3,6 @@
 var gulp = require('gulp');
 var browserSync = require('browser-sync').create();
 var modRewrite = require('connect-modrewrite');
-var compass = require('gulp-compass');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 var minifyCss = require('gulp-minify-css');
