@@ -17,39 +17,6 @@ function buildURL(path) {
 }
 
 /*
- More information: https://github.com/Narzerus/angular-permission#defining-roles
-
- In this function we will define all the different roles that our users can have.
- How it works?
-
- Permission.defineRole('NAME_FOR_ROLE', function () {
- return A_CONDITION_THAT_RETURNS_TRUE_IF_USER_BELONGS_TO_THIS_ROLE;
- }
- */
-
-function loadPermissions(Permission, UserFactory) {
-    Permission.defineRole('anonymous', function () {
-        return !UserFactory.getUser();
-    });
-
-    Permission.defineRole('user', function () {
-        if (angular.isDefined(UserFactory.getUser())) {
-            if (UserFactory.getUser().role === 'user') {
-                return true;
-            }
-        }
-    });
-
-    Permission.defineRole('administrator', function () {
-        if (angular.isDefined(UserFactory.getUser())) {
-            if (UserFactory.getUser().role === 'administrator') {
-                return true;
-            }
-        }
-    });
-}
-
-/*
  Sometimes we need to have a temporal variable accessible across the entire application but we don't mind if we loose it
  by reloading the web. For example, if we have a list with content paginated and we want to edit some articles but
  without loosing the page we were at the list, we can save it as a temporal variable and then recover it.

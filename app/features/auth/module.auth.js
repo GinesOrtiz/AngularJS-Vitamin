@@ -49,8 +49,37 @@
     }
 
     AuthRun.$inject = ['Permission', 'UserFactory'];
-    function AuthRun(Permission, UserFactory){
-        /* global loadPermissions */
-        loadPermissions(Permission, UserFactory);
+    function AuthRun(Permission, UserFactory) {
+
+        /*
+         More information: https://github.com/Narzerus/angular-permission#defining-roles
+
+         In this function we will define all the different roles that our users can have.
+         How it works?
+
+         Permission.defineRole('NAME_FOR_ROLE', function () {
+         return A_CONDITION_THAT_RETURNS_TRUE_IF_USER_BELONGS_TO_THIS_ROLE;
+         }
+         */
+
+        Permission.defineRole('anonymous', function () {
+            return !UserFactory.getUser();
+        });
+
+        Permission.defineRole('user', function () {
+            if (angular.isDefined(UserFactory.getUser())) {
+                if (UserFactory.getUser().role === 'user') {
+                    return true;
+                }
+            }
+        });
+
+        Permission.defineRole('administrator', function () {
+            if (angular.isDefined(UserFactory.getUser())) {
+                if (UserFactory.getUser().role === 'administrator') {
+                    return true;
+                }
+            }
+        });
     }
 }());
